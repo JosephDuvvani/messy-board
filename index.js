@@ -1,5 +1,6 @@
 import express from "express";
-import { getMesseges } from "./routes/indexRouter.js";
+import { getMesseges, indexRouter } from "./routes/indexRouter.js";
+import { formRouter } from "./routes/formRouter.js";
 import path from "path";
 
 const app = express();
@@ -12,5 +13,9 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) => {
   res.render("index", { title: "Message Board", messages: getMesseges() });
 });
+
+app.use(express.urlencoded({ extended: true }));
+app.use("/new", formRouter, indexRouter);
+
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}!`));

@@ -3,19 +3,22 @@
     <title>Messy</title>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <ul>
-      <% for (let msg of messages){ %>
-      <li>
-        <div class="msg-card">
-          <div class="msg-header">
-            <h2 class="username"><%= msg.user %></h2>
-            <div class="msg-date"><%= msg.added %></div>
+    <%- include('header') %>
+    <div>
+      <a href="new">New Message</a>
+      <ul>
+        <% for (let msg of messages){ %>
+        <li>
+          <div class="msg-card">
+            <div class="msg-header">
+              <h2 class="username"><%= msg.user %></h2>
+              <div class="msg-date"><%= msg.added %></div>
+            </div>
+            <div class="msg-text"><%= msg.text %></div>
           </div>
-          <div class="msg-text"><%= msg.text %></div>
-        </div>
-      </li>
-      <% } %>
-    </ul>
+        </li>
+        <% } %>
+      </ul>
+    </div>
   </body>
 </html>

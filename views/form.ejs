@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Message Form</title>
+  </head>
+  <body>
+    <%- include('header', {title: "Message Form"}) %>
+    <div>
+      <form method="post" action="/new">
+        <label for="username">
+          <input type="text" name="username" id="username" />
+        </label>
+        <label for="message">
+          <textarea name="messageText" id="message"></textarea>
+        </label>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </body>
+</html>

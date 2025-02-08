@@ -1,4 +1,7 @@
 import { format } from "date-fns";
+import { Router } from "express";
+
+const indexRouter = Router();
 
 const datetimeFormat = (datetime) => format(datetime, "d MMM HH:mm");
 
@@ -17,4 +20,14 @@ const messages = [
 
 const getMesseges = () => messages;
 
-export { getMesseges };
+indexRouter.post("/", (req, res) => {
+  const data = req.body;
+  messages.push({
+    text: data.messageText,
+    user: data.username,
+    added: datetimeFormat(new Date()),
+  });
+  res.redirect("/");
+});
+
+export { getMesseges, indexRouter };
