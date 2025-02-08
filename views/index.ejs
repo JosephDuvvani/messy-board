@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Messy</title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <ul>
+      <% for (let msg of messages){ %>
+      <li>
+        <div class="msg-card">
+          <div class="msg-header">
+            <h2 class="username"><%= msg.user %></h2>
+            <div class="msg-date"><%= msg.added %></div>
+          </div>
+          <div class="msg-text"><%= msg.text %></div>
+        </div>
+      </li>
+      <% } %>
+    </ul>
+  </body>
+</html>
