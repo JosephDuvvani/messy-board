@@ -1,21 +1,27 @@
 <html>
   <head>
     <title>Messy</title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <%- include('header') %>
     <div>
-      <a href="new">New Message</a>
-      <ul>
+      <div class="banner">
+        <a href="new" class="new-msg-btn">New Message</a>
+      </div>
+      <ul class="msg-list">
         <% for (let msg of messages){ %>
         <li>
           <div class="msg-card">
             <div class="msg-header">
               <h2 class="username"><%= msg.user %></h2>
-              <div class="msg-date"><%= msg.added %></div>
+              <div class="msg-date">
+                <%= msg.added.day %> <%= msg.added.month %> <%= msg.added.time
+                %>
+              </div>
             </div>
             <div class="msg-text"><%= msg.text %></div>
-            <a href="message/<%= msg.id %>">Details</a>
+            <a href="message/<%= msg.id %>" class="details-btn"> Details </a>
           </div>
         </li>
         <% } %>

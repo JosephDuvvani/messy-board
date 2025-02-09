@@ -3,7 +3,15 @@ import { Router } from "express";
 
 const indexRouter = Router();
 
-const datetimeFormat = (datetime) => format(datetime, "d MMM HH:mm");
+const datetimeFormat = (datetime) => {
+  return {
+    weekday: format(datetime, "eee"),
+    day: format(datetime, "d"),
+    month: format(datetime, "MMM"),
+    time: format(datetime, "HH:mm"),
+    year: format(datetime, "yyyy"),
+  };
+};
 
 const messages = [
   {

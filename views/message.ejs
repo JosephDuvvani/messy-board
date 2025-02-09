@@ -1,13 +1,19 @@
 <html>
   <head>
     <title><%= user %></title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <%- include('header', {title: 'Message'}) %>
-    <div>
-      <div><%= date %></div>
-      <div><%= text %></div>
-      <div><%= user %></div>
+    <div class="msg-container">
+      <div class="msg-header_m">
+        <div class="msg-date_m">
+          <%= date.month %> <%= date.day %>, <%= date.year %>
+        </div>
+        <div class="msg-time_m"><%= date.time %></div>
+      </div>
+      <div class="msg-text_m"><%= text %></div>
+      <div class="username_m">— <%= user.toUpperCase() %></div>
     </div>
   </body>
 </html>
