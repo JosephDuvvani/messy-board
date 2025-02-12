@@ -1,8 +1,9 @@
 import express from "express";
-import { getMesseges, indexRouter } from "./routes/indexRouter.js";
+import { indexRouter } from "./routes/indexRouter.js";
 import { formRouter } from "./routes/formRouter.js";
 import path from "path";
 import { messageRouter } from "./routes/messageRouter.js";
+import { msgListGet } from "./controllers/msgControllers.js";
 
 const app = express();
 
@@ -14,9 +15,7 @@ app.set("view engine", "ejs");
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
-app.get("/", (req, res) => {
-  res.render("index", { title: "Message Board", messages: getMesseges() });
-});
+app.get("/", msgListGet);
 
 app.use(express.urlencoded({ extended: true }));
 app.use("/new", formRouter, indexRouter);
